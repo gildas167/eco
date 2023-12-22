@@ -1,5 +1,5 @@
-import curses
 from __future__ import division
+import curses
 import time
 import RPi.GPIO as GPIO
 import sys

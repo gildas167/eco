@@ -1,5 +1,45 @@
 import curses
-import pwm  # Assurez-vous d'importer correctement votre bibliothèque PWM
+from __future__ import division
+import time
+import RPi.GPIO as GPIO
+import sys
+import Adafruit_PCA9685
+
+#Ultrasonic pins
+Tr = 11
+Ec = 8
+
+pwm = Adafruit_PCA9685.PCA9685()
+pwm.set_pwm_freq(50)
+
+# motor_EN_A: Pin7  |  motor_EN_B: Pin11
+# motor_A:  Pin8,Pin10    |  motor_B: Pin13,Pin12
+
+Motor_B_EN    = 4
+Motor_A_EN    = 17
+
+Motor_B_Pin1  = 14
+Motor_B_Pin2  = 15
+Motor_A_Pin1  = 27
+Motor_A_Pin2  = 18
+
+Dir_forward   = 0
+Dir_backward  = 1
+
+left_forward  = 0
+left_backward = 1
+
+right_forward = 0
+right_backward= 1
+
+pwn_A = 0
+pwm_B = 0
+
+speed_set = 70
+
+line_pin_right = 19
+line_pin_middle = 16
+line_pin_left = 20
 
 def startServo(stdscr):
     # Initialiser la position des servomoteurs
